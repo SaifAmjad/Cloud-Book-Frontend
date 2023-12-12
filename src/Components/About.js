@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 const About = () => {
   
   return (
-   <div>hehe</div>
+   <div>This Application is for storing and managing your daily tasks and keeping your virtual book secure also</div>
   )
 }
 
