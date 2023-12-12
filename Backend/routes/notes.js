@@ -5,7 +5,6 @@ const authenticate=require('../middleware/authenticate');
 
 
 router.get('/allnotes',allNotes)
-
 router.post('/addnote',addNote);
 
 router.put('/updatenote/:id',updatenote);
