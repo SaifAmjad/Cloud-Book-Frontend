@@ -2,7 +2,7 @@ import { useState } from "react";
 import NoteContext from "./NoteContext";
 
 const NoteState = (props) => {
-  const host='http://localhost:5000';
+  const host='https://cloud-book-kappa.vercel.app';
   const noteData = [];
   const [notes, setNote] = useState(noteData);
   const localToken=localStorage.getItem('token')

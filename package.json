@@ -1,5 +1,5 @@
 {
-  "homepage":"https://SaifAmjad.github.io/Cloud-Book",
+  "homepage": "https://SaifAmjad.github.io/Cloud-Book",
   "name": "loudbook",
   "version": "0.1.0",
   "private": true,
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build" ,
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,6 +44,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.0"
+    "gh-pages": "^6.1.1"
   }
 }
