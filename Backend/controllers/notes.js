@@ -6,7 +6,7 @@ const User=require('../model/user')
 const allNotes=asyncHandler(async(req,res)=>{
     
 
-    const notes=await Notes.find({});
+    const notes=await Notes.find({user:req.user.id});
     
     res.json({notes,hbnotes:notes.length}); 
 })
@@ -21,6 +21,7 @@ const addNote=asyncHandler(async(req,res)=>{
         title,
         description,
         tag,
+        user:req.user.id
     }
 
     const notes=await Notes.create(obj);

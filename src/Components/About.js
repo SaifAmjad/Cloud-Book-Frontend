@@ -5,7 +5,14 @@ import Button from 'react-bootstrap/Button';
 const About = () => {
   
   return (
-   <div>This Application is for storing and managing your daily tasks and keeping your virtual book secure also</div>
+   <div> 
+    {localStorage.getItem("token") === null?<div
+        className={`alert alert-primary`}
+        role="alert"
+      >
+        Please login or signup to start keeping your notes
+      </div>:""}
+This Application is for storing and managing your daily tasks</div>
   )
 }
 

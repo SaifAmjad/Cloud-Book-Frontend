@@ -1,10 +1,10 @@
 const Mongoose=require('mongoose');
 
 const noteSchema=new Mongoose.Schema({
-    // user:{
-    //     type:Mongoose.Schema.Types.ObjectId,
-    //     ref:'users'
-    // },
+    user:{
+        type:Mongoose.Schema.Types.ObjectId,
+        ref:'users'
+    },
     title:{
         type:String,
         required:[true,'Please enter title']

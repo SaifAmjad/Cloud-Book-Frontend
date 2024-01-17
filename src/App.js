@@ -5,12 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import About from "./Components/About";
 import NoteState from "./Context/notes/NoteState";
-import Alert from "./Components/Alert";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import Loutout from "./Components/Logout";
 
 function App() {
+  
   return (
     <>
       <NoteState>

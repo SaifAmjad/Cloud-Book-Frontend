@@ -1,14 +1,18 @@
-import React from 'react'
-import Notes from './Notes';
+import React from "react";
+import Notes from "./Notes";
 
 const Home = () => {
-
   return (
     <div>
-      <Notes/>
+      {localStorage.getItem("token") === null?<div
+        className={`alert alert-primary`}
+        role="alert"
+      >
+        Please login or signup to start keeping your notes
+      </div>:""}
+      <Notes />
     </div>
-  )
-}
+  );
+};
 
-export default Home
-
+export default Home;

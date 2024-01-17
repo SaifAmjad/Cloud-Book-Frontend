@@ -1,50 +1,48 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
- let history = useNavigate();
-const host='http://localhost:5000';
-const[auth,setAuth]=useState({email:"",password:""});
+  let history = useNavigate();
+  const host = "http://localhost:5000";
+  const [auth, setAuth] = useState({ email: "", password: "" });
 
-const handleClick= async(e)=>{
+  const handleClick = async (e) => {
     e.preventDefault();
     const response = await fetch(`${host}/api/v1/auth/loginuser`, {
-      method: "POST", 
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      
-      body: JSON.stringify({email:auth.email,password:auth.password}),  
+
+      body: JSON.stringify({ email: auth.email, password: auth.password }),
     });
 
     const jsondata = await response.json();
     console.log(jsondata);
 
-    if (jsondata.success){
-      // Save the auth token and redirect
-      localStorage.setItem('token', jsondata.authtoken); 
-      history.push("/");
-
-  }
-  else{
+    if (jsondata.success) {
+      localStorage.setItem("token", jsondata.token);
+      history("/Cloud-Book");
+    } else {
       alert("Invalid credentials");
-  }
+    }
+  };
 
-
-}
-
-const onChange=(e)=>{
-  setAuth({...auth,[e.target.name] : e.target.value});
-
-}
-
-
-
-
-
+  const onChange = (e) => {
+    setAuth({ ...auth, [e.target.name]: e.target.value });
+  };
 
   return (
     <div>
+      <div
+        className={`alert alert-primary ${
+          localStorage.getItem("token") === null ? "visible" : "invisible"
+        }`}
+        role="alert"
+      >
+        Please login or signup to start keeping your notes
+      </div>
+
       <form onSubmit={handleClick}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

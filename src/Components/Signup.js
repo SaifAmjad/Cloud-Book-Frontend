@@ -1,51 +1,53 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-const Signup=()=> {
+const Signup = () => {
   const navigate = useNavigate();
-  const host='http://localhost:5000';
-  const[auth,setAuth]=useState({name:"",email:"",password:""});
-  
-  const handleClick= async(e)=>{
+  const host = "http://localhost:5000";
+  const [auth, setAuth] = useState({ name: "", email: "", password: "" });
+
+  const handleClick = async (e) => {
     e.preventDefault();
     const response = await fetch(`${host}/api/v1/auth/createuser`, {
-      method: "POST", 
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      
-      body: JSON.stringify({name:auth.name,email:auth.email,password:auth.password}),  
+
+      body: JSON.stringify({
+        name: auth.name,
+        email: auth.email,
+        password: auth.password,
+      }),
     });
 
     const jsondata = await response.json();
     console.log(jsondata.token);
 
-    if (jsondata.success){
-      // Save the auth token and redirect
-      localStorage.setItem('token', jsondata.token); 
-      navigate('/');
-
-  }
-  else{
+    if (jsondata.success) {
+      localStorage.setItem("token", jsondata.token);
+      navigate("/Cloud-Book");
+    } else {
       alert("Invalid credentials");
-  }
-  }
-  const onChange=(e)=>{
-    setAuth({...auth,[e.target.name] : e.target.value});
-  
-  }
-
-
-
-
-
+    }
+  };
+  const onChange = (e) => {
+    setAuth({ ...auth, [e.target.name]: e.target.value });
+  };
 
   return (
     <div>
+      <div
+        className={`alert alert-primary ${
+          localStorage.getItem("token") === null ? "visible" : "invisible"
+        }`}
+        role="alert"
+      >
+        Please login or signup to start keeping your notes
+      </div>
 
       <form onSubmit={handleClick}>
-      <div className="mb-3">
+        <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Name
           </label>
@@ -59,7 +61,6 @@ const Signup=()=> {
             aria-describedby="emailHelp"
           />
         </div>
-
 
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
@@ -87,7 +88,8 @@ const Signup=()=> {
             className="form-control"
             value={auth.password}
             onChange={onChange}
-            minLength={5} required
+            minLength={5}
+            required
             id="password"
             name="password"
           />
@@ -100,4 +102,4 @@ const Signup=()=> {
   );
 };
 
-export default Signup
+export default Signup;

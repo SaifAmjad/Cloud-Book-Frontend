@@ -4,12 +4,12 @@ const {allNotes,addNote,updatenote,deletenote}=require('../controllers/notes')
 const authenticate=require('../middleware/authenticate');
 
 
-router.get('/allnotes',allNotes)
-router.post('/addnote',addNote);
+router.get('/allnotes',authenticate,allNotes)
+router.post('/addnote',authenticate,addNote);
 
-router.put('/updatenote/:id',updatenote);
+router.put('/updatenote/:id',authenticate,updatenote);
 
-router.delete('/deletenote/:id',deletenote);
+router.delete('/deletenote/:id',authenticate,deletenote);
 
 
 
