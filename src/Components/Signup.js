@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const host = "https://cloud-book-kappa.vercel.app";
+  const host = "https://cloud-book-omega.vercel.app";
   const [auth, setAuth] = useState({ name: "", email: "", password: "" });
 
   const handleClick = async (e) => {
